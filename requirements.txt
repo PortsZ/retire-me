@@ -1,0 +1,10 @@
+Flask
+Flask-Cors
+Flask-Session
+pandas
+numpy
+yfinance
+requests
+python-dotenv
+cs50
+Werkzeug
