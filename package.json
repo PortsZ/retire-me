@@ -4,13 +4,19 @@
   "private": true,
   "scripts": {
     "flask-dev": "flask --app src/app/api/python/index run -p 5328 --debugger --reload",
+    "flask-build": "flask --app src/app/api/python/index build",
+    "flask-start": "flask --app src/app/api/python/index start",
     "next-dev": "NODE_ENV=development next dev",
+    "next-build": "NODE_ENV=production next build",
+    "next-start": "NODE_ENV=production next start",
     "dev": "concurrently \"npm run next-dev\" \"npm run flask-dev\"",
-    "build": "next build",
-    "start": "next start",
+    "build": "concurrently \"npm run next-build\" \"npm run flask-build\"",
+    "start": "concurrently \"npm run next-start\" \"npm run flask-start\"",
     "lint": "next lint"
   },
   "dependencies": {
+    "@libsql/client": "^0.6.0",
+    "@prisma/adapter-libsql": "^5.14.0",
     "@prisma/client": "^5.7.0",
     "axios": "^1.6.2",
     "bcrypt": "^5.1.1",

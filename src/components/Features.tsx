@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense, Fragment } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { rebalancePortfolio, getPortfolio } from "@/services/PortfolioService";
@@ -32,13 +32,13 @@ const features = [
   },
 ];
 
-const Features = ({ sessionData }) => {
+const Features = ({ sessionData }:any) => {
   const [formatedPortfolio, setFormatedPortfolio] = useState(null); // [ { symbol: "AAPL", quantity: 10 }, ...
   const [selectedRebalance, setSelectedRebalance] = useState(null);
   const [rebalanceData, setRebalanceData] = useState(null);
 
 
-  const handleCardClick = async (index) => {
+  const handleCardClick = async (index:any) => {
     const portfolio = await formatPortfolioData();
 
     setFormatedPortfolio(portfolio);
@@ -70,14 +70,14 @@ const Features = ({ sessionData }) => {
       {features.map((feature, index) => {
         if (feature.name === "Rebalanceamento de Portfólio") {
           return (
-            <>
+            <React.Fragment key={index}>
               <motion.div
-                key={index}
+                
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                layoutId={index}
+                layoutId={index.toString()}
                 className={`${feature.style} p-4 text-black bg-gradient-to-tr rounded-lg cursor-pointer select-none`}
-                onClick={() => handleCardClick(formatPortfolioData(), index)}
+                onClick={() => handleCardClick(index)}
               >
                 <h3 className="text-xl font-medium">{feature.name}</h3>
                 <p className="text-slate-900 italic">{feature.description}</p>
@@ -179,7 +179,7 @@ const Features = ({ sessionData }) => {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </>
+            </React.Fragment>
           );
         }
         return (
