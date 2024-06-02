@@ -6,7 +6,8 @@ from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from python/helpers import lookup, rebalance
+from helpers import lookup
+from rebalance import rebalance
 
 # Set the environment variable
 os.environ["FLASK_ENV"] = "development"
@@ -20,6 +21,7 @@ def hello_world():
 
 @app.route("/api/lookup", methods=["POST", "GET"])
 def flask_lookup():
+    print("DEBUG: ", request.method)
     if request.method == "POST":
         data = request.json  # Get JSON data from request
 
