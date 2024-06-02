@@ -4,6 +4,7 @@ from flask import Flask, flash, redirect, render_template, request, session, jso
 from flask_cors import CORS
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
 from helpers import lookup
 from rebalance import rebalance
@@ -28,13 +29,8 @@ def flask_lookup():
         if not symbol:
             return jsonify({"error": "No symbol provided"}), 400
 
-
         stock_data = lookup(symbol)
         return jsonify(stock_data)
-    #
-    #
-    #
-    #
 
 @app.route("/api/python/rebalance", methods=["POST"])
 def flask_rebalance():
@@ -45,13 +41,19 @@ def flask_rebalance():
         if 'stocks' not in data:
             return jsonify({"error": "No stocks data provided"}), 400
 
-
-
         stocks = data['stocks']
         rebalance_data = rebalance(stocks)
-
         return jsonify(rebalance_data)
 
+# For Vercel
+def create_app():
+    return app
+
+# Main block
+if __name__ != "__main__":
+    app = DispatcherMiddleware(app, {
+        '/api/python': create_app()
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)
