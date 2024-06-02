@@ -22,10 +22,12 @@ export default function Page() {
 
   const password = watch("password");
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   async function registerUser(data: any) {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/sign-up",
+        `${apiUrl}/api/auth/sign-up`,
         {
           email: data.email,
           password: data.password,
