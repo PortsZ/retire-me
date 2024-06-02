@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function POST(req) {
+export async function POST(req:any) {
   const res = await req.json();
 
   const response = await axios.post('http://localhost:5328/api/python/lookup', res);

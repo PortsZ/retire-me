@@ -7,7 +7,7 @@ interface StockData {
 
 
 
-export async function POST(req) {
+export async function POST(req:any) {
   const { userId, symbol, quantity } = await req.json();
 
   const user = await prisma.user.findUnique({
@@ -34,7 +34,7 @@ export async function POST(req) {
   }
 }
 
-export async function PUT(req) {
+export async function PUT(req:any) {
   const { userId, symbol, quantity } = await req.json();
 
   const user = await prisma.user.findUnique({
@@ -71,7 +71,7 @@ export async function PUT(req) {
 }
 
 
-export async function DELETE(req) {
+export async function DELETE(req:any) {
   const { userId, symbol } = await req.json();
 
   console.log(userId, symbol);

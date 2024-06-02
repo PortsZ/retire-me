@@ -12,7 +12,7 @@ export default function RetireForm() {
     setError,
     clearErrors,
     formState: { errors },
-  } = useForm();
+  }:any = useForm();
   const [isGoalMet, setIsGoalMet] = useState(false);
   const [endCapital, setEndCapital] = useState(0);
   const [monthlyDividend, setMonthlyDividend] = useState(0);
@@ -174,7 +174,7 @@ export default function RetireForm() {
   //
   // ====================================================================================================
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data:any) => {
     Promise.resolve(setEndCapital(getEndCapital())).then(() => {
       setShouldUpdate(true);
     });
@@ -226,14 +226,14 @@ export default function RetireForm() {
                 className="rounded bg-slate-900 px-4 py-2"
                 {...register("retirementAge", {
                   required: "Retirement age is required",
-                  validate: (value) =>
+                  validate: (value:any) =>
                     value > age ||
                     "Retirement age must be greater than current age",
                 })}
                 placeholder="Retirement Age"
               />
               {errors.retirementAge && (
-                <p className="text-red-500">{errors.retirementAge.message}</p>
+                <p className="text-red-500">{errors?.retirementAge?.message}</p>
               )}
             </div>
           </div>

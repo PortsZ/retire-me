@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const FinancingForm = () => {
-  const { register, watch, setValue, getValues, handleSubmit } = useForm({
+  const { register, watch, setValue, getValues, handleSubmit }:any = useForm({
     defaultValues: {
       amount: "",
       months: "",
@@ -32,6 +32,7 @@ const FinancingForm = () => {
   const calculateFinancing = () => {
     const { amount, months, interestRate } = getValues();
     //
+    const installment = calculateInstallment();
     if (amount && months && interestRate) {
       //
 
@@ -45,7 +46,6 @@ const FinancingForm = () => {
         monthlyInterestRate = interest;
       }
       //
-      const installment = calculateInstallment();
       //
       const total = installment * months;
       //
@@ -94,7 +94,7 @@ const FinancingForm = () => {
       //
       setValue("installment", installment.toFixed(2));
       //
-      return installment;
+      return installment as any;
     }
   };
   //

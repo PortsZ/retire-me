@@ -75,7 +75,7 @@ export const options: NextAuthOptions = {
         if (dbUser) {
           // Add the user ID and other details to the session
           session.user.id = dbUser.id;
-          session.username = dbUser.username;
+          session.user.username = dbUser.username;
           session.portfolio = dbUser.portfolio;
 
           // If the portfolio exists, also add the stocks to the session

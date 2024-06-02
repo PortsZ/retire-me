@@ -2,14 +2,18 @@ import axios from "axios";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-export const getPortfolio = async (userId) => {
+
+
+
+
+export const getPortfolio = async (userId:any) => {
 
   const response = await axios.get(`${apiUrl}/api/portfolio/stock/${userId}`);
 
   return response.data;
 };
 
-export const addStockToPortfolio = async (userId, symbol, quantity) => {
+export const addStockToPortfolio = async (userId:any, symbol:any, quantity:any) => {
   const data = {
     userId: userId,
     symbol: symbol,
@@ -19,7 +23,7 @@ export const addStockToPortfolio = async (userId, symbol, quantity) => {
   return response.data;
 };
 
-export const updateStockQuantity = async (userId, symbol, quantity) => {
+export const updateStockQuantity = async (userId:any, symbol:any, quantity:any) => {
   const data = {
     userId: userId,
     symbol: symbol,
@@ -29,7 +33,7 @@ export const updateStockQuantity = async (userId, symbol, quantity) => {
   return response.data;
 };
 
-export const liquidateStock = async (userId, symbol) => {
+export const liquidateStock = async (userId:any, symbol:any) => {
   const data = { userId, symbol };
   const response = await axios.delete(`${apiUrl}/api/portfolio/stock`, {
     data,
@@ -37,7 +41,7 @@ export const liquidateStock = async (userId, symbol) => {
   return response.data;
 };
 
-export const rebalancePortfolio = async (stocks) => {
+export const rebalancePortfolio = async (stocks:any) => {
   const data = { stocks };
   const response = await axios.post(`${apiUrl}/api/portfolio/rebalance`, data);
 

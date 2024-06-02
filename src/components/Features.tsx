@@ -35,7 +35,7 @@ const features = [
 const Features = ({ sessionData }:any) => {
   const [formatedPortfolio, setFormatedPortfolio] = useState(null); // [ { symbol: "AAPL", quantity: 10 }, ...
   const [selectedRebalance, setSelectedRebalance] = useState(null);
-  const [rebalanceData, setRebalanceData] = useState(null);
+  const [rebalanceData, setRebalanceData] = useState<any|null>(null);
 
 
   const handleCardClick = async (index:any) => {
@@ -50,8 +50,8 @@ const Features = ({ sessionData }:any) => {
     const portfolio = await getPortfolio(sessionData.user.id);
 
 
-    let stocks = {};
-    portfolio.forEach((stock) => {
+    let stocks = {} as any;
+    portfolio.forEach((stock:any) => {
       stocks[stock.symbol] = stock.quantity;
     });
     return stocks;
@@ -162,7 +162,7 @@ const Features = ({ sessionData }:any) => {
                               <tfoot>
                                 <tr>
                                   <td
-                                    colSpan="5"
+                                    colSpan={5}
                                     className="px-5 py-5 border-b border-gray-200 bg-white text-slate-600 text-sm font-bold"
                                   >
                                     Total Adjusted Market Value:{" "}

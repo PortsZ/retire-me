@@ -7,7 +7,7 @@ import { addStockToPortfolio } from "@/services/PortfolioService";
 import { useForm } from "react-hook-form";
 
 const Portfolio = () => {
-  const [portfolio, setPortfolio] = useState([]);
+  const [portfolio, setPortfolio] = useState<any>([]);
   const [total, setTotal] = useState(0);
   const [shouldFetch, setShouldFetch] = useState(true);
   const [shouldUpdate, setShouldUpdate] = useState(false);
@@ -15,7 +15,7 @@ const Portfolio = () => {
 
   const { register, handleSubmit } = useForm();
   const { data } = useSession();
-  const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState<any>(null);
 
   const updatePortfolio = () => {
     setPortfolio([]);
@@ -27,7 +27,7 @@ const Portfolio = () => {
       setUserId(data.user.id);
 
       Promise.all(
-        data.stocks.map((stock) => {
+        data.stocks.map((stock:any) => {
           return lookupStock(stock.symbol.toUpperCase()).then((res) => ({
             symbol: stock.symbol.toUpperCase(),
             price: res.price,
@@ -70,7 +70,7 @@ const Portfolio = () => {
   //
   //====================================================================================================
 
-  const lookupStock = async (smbl) => {
+  const lookupStock = async (smbl:any) => {
     const lookupRes = await axios.post(`${apiUrl}/api/lookup`, {
       symbol: smbl.toUpperCase(),
     });
@@ -89,7 +89,7 @@ const Portfolio = () => {
   //
   //====================================================================================================
 
-  const addStock = async (data) => {
+  const addStock = async (data:any) => {
     console.log("data:", data.symbol);
     const lookupRes = await lookupStock(data.symbol);
 
@@ -136,7 +136,7 @@ const Portfolio = () => {
 
   const grandTotal = () => {
     let total = 0;
-    portfolio.forEach((stock) => {
+    portfolio.forEach((stock:any) => {
       total += stock.price * stock.quantity;
     });
     setTotal(total);
@@ -175,12 +175,12 @@ const Portfolio = () => {
         </div>
       </form>
 
-      <PortfolioTable
+      {data && <PortfolioTable
         portfolio={portfolio}
         total={total}
         setPortfolio={setPortfolio}
         userId={data.user.id}
-      />
+      />}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { User, Prisma } from '@prisma/client';
 
-export async function CreateUser(user): Promise<User | undefined> {
+export async function CreateUser(user:any): Promise<User | undefined> {
   try {
     // Extract username from email
     const username = user.email.substring(0, user.email.lastIndexOf("@")) || null;

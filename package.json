@@ -10,7 +10,7 @@
     "next-build": "NODE_ENV=production next build",
     "next-start": "NODE_ENV=production next start",
     "dev": "concurrently \"npm run next-dev\" \"npm run flask-dev\"",
-    "build": "concurrently \"npm run next-build\" \"npm run flask-build\"",
+    "build": "npm run next-build",
     "start": "concurrently \"npm run next-start\" \"npm run flask-start\"",
     "lint": "next lint"
   },

@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import { updateStockQuantity, liquidateStock } from "@/services/PortfolioService";
 
-const PortfolioTable = ({ portfolio, total, setPortfolio, userId }) => {
+const PortfolioTable = ({ portfolio, total, setPortfolio, userId }:any) => {
   const [editingRow, setEditingRow] = useState(null);
-  const [newQuantity, setNewQuantity] = useState({});
+  const [newQuantity, setNewQuantity] = useState<any>({});
 
-  const handleEdit = (index, stock) => {
+  const handleEdit = (index:any, stock:any) => {
     setEditingRow(index);
     setNewQuantity({ ...newQuantity, [stock.symbol]: stock.quantity });
   };
 
-  const handleQuantityChange = (symbol, quantity) => {
+  const handleQuantityChange = (symbol:any, quantity:any) => {
     setNewQuantity({ ...newQuantity, [symbol]: quantity });
   };
 
-  const handleUpdate = async (symbol) => {
+  const handleUpdate = async (symbol:any) => {
     const quantity = newQuantity[symbol];
     await updateStockQuantity(userId, symbol, quantity);
     setEditingRow(null);
 
-    setPortfolio((prevPortfolio) => {
-      return prevPortfolio.map(stock => {
+    setPortfolio((prevPortfolio:any) => {
+      return prevPortfolio.map((stock:any) => {
         if (stock.symbol === symbol) {
           return { ...stock, quantity: quantity };
         }
@@ -29,11 +29,11 @@ const PortfolioTable = ({ portfolio, total, setPortfolio, userId }) => {
     });
   };
 
-  const handleDelete = async (symbol) => {
+  const handleDelete = async (symbol:any) => {
     await liquidateStock(userId, symbol);
 
-    setPortfolio((prevPortfolio) => {
-      return prevPortfolio.filter(stock => stock.symbol !== symbol);
+    setPortfolio((prevPortfolio:any) => {
+      return prevPortfolio.filter((stock:any) => stock.symbol !== symbol);
     });
   };
 
@@ -50,7 +50,7 @@ const PortfolioTable = ({ portfolio, total, setPortfolio, userId }) => {
           </tr>
         </thead>
         <tbody>
-          {portfolio.map((stock, index) => (
+          {portfolio.map((stock:any, index:any) => (
             <tr key={index} className="hover:bg-gray-600">
               <td className="px-4 py-2 border-b border-gray-600">
                 {stock.symbol}
@@ -97,10 +97,10 @@ const PortfolioTable = ({ portfolio, total, setPortfolio, userId }) => {
             </tr>
           ))}
           <tr className="bg-gray-700 font-bold">
-            <td className="px-4 py-2 border-b border-gray-600" colSpan="3">
+            <td className="px-4 py-2 border-b border-gray-600" colSpan={3}>
               Total Portfolio Value
             </td>
-            <td className="text-center px-4 py-2 border-b border-gray-600" colSpan="2">
+            <td className="text-center px-4 py-2 border-b border-gray-600" colSpan={2}>
               {total.toFixed(2)}
             </td>
           </tr>

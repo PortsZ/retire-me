@@ -45,7 +45,7 @@ const itemVariants = {
 
 
 const Navbar = () => {
-  const { status, data } = useSession();
+  const { status, data } = useSession<any>();
   const [menuOpen, setMenuOpen] = useState(false);
 
 
@@ -59,7 +59,7 @@ const Navbar = () => {
           >
             Me_Aposenta
           </a>
-          <p className="italic">{data ? `Hello, ${data.username}` : ""}</p>
+          <p className="italic">{data ? `Hello, ${data.user?.username}` : ""}</p>
         </div>
         <a href={status=== 'authenticated' ? "/auth/sign-out" : '/auth/sign-in'} className="text-zinc-100 italic">
           {status === "authenticated" ? "Log Out" : "Sign In"}
@@ -107,7 +107,7 @@ const Navbar = () => {
             variants={itemVariants}
             className="italic text-zinc-100"
           >
-            {data ? `Hello, ${data.username}` : ""}
+            {data ? `Hello, ${data.user?.username}` : ""}
           </motion.p>
           <motion.a
             variants={itemVariants}

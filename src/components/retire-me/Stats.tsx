@@ -1,6 +1,6 @@
 import React from "react";
 
-const StatsCard = ({ title, endCapital, monthlyDividend, isMain }) => {
+const StatsCard = ({ title, endCapital, monthlyDividend, isMain }:any) => {
   const cardStyle = isMain
     ? "bg-gradient-to-tr from-green-500 to-lime-500 text-black shadow-lg"
     : "bg-gradient-to-tr from-slate-900 to-slate-800 text-white shadow";
@@ -14,7 +14,7 @@ const StatsCard = ({ title, endCapital, monthlyDividend, isMain }) => {
   );
 };
 
-const Stats = ({ formData }) => {
+const Stats = ({ formData }:any) => {
   const {
     age,
     retirementAge,
@@ -51,7 +51,7 @@ const Stats = ({ formData }) => {
   retirementAges = Array.from(new Set(retirementAges)).sort((a, b) => a - b);
 
   // Function to calculate end capital for a given retirement age
-  const getEndCapital = (altRetirementAge) => {
+  const getEndCapital = (altRetirementAge:any) => {
     const effectiveRetirementAge = altRetirementAge !== null ? altRetirementAge : retirementAge;
     const monthlyInterestRate = Math.pow(1 + interestRate, 1 / 12) - 1;
     const totalMonths = (effectiveRetirementAge - age) * 12;
@@ -61,7 +61,7 @@ const Stats = ({ formData }) => {
   };
 
   // Function to calculate monthly dividend for a given end capital
-  const getMonthlyDividend = (endCapital) => {
+  const getMonthlyDividend = (endCapital:any) => {
     const monthlyInterestRate = Math.pow(1 + interestRate, 1 / 12) - 1;
     return endCapital * monthlyInterestRate;
   };
