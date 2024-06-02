@@ -25,7 +25,7 @@ export default function Page() {
   async function registerUser(data: any) {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:3000/api/auth/sign-up",
+        "http://localhost:3000/api/auth/sign-up",
         {
           email: data.email,
           password: data.password,
