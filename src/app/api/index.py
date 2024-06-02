@@ -6,8 +6,7 @@ from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-from helpers import lookup
-from rebalance import rebalance
+from python/helpers import lookup, rebalance
 
 # Set the environment variable
 os.environ["FLASK_ENV"] = "development"
@@ -15,11 +14,11 @@ os.environ["FLASK_ENV"] = "development"
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/api/python")
+@app.route("/api")
 def hello_world():
     return jsonify(data="Hello World!!!!")
 
-@app.route("/api/python/lookup", methods=["POST", "GET"])
+@app.route("/api/lookup", methods=["POST", "GET"])
 def flask_lookup():
     if request.method == "POST":
         data = request.json  # Get JSON data from request
@@ -32,7 +31,7 @@ def flask_lookup():
         stock_data = lookup(symbol)
         return jsonify(stock_data)
 
-@app.route("/api/python/rebalance", methods=["POST"])
+@app.route("/api/rebalance", methods=["POST"])
 def flask_rebalance():
     if request.method == "POST":
         data = request.json
@@ -52,7 +51,7 @@ def create_app():
 # Main block
 if __name__ != "__main__":
     app = DispatcherMiddleware(app, {
-        '/api/python': create_app()
+        '/api': create_app()
     })
 
 if __name__ == "__main__":

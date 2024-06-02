@@ -1,8 +1,8 @@
 // File: /home/portsz/projects/portsz/finapp/retire-me/src/app/api/python/route.ts
-import * as entry from '../../../../../src/app/api/python/route.js'
+import * as entry from '../../../../../src/app/api/route.js'
 import type { NextRequest } from 'next/server.js'
 
-type TEntry = typeof import('../../../../../src/app/api/python/route.js')
+type TEntry = typeof import('../../../../../src/app/api/route.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
