@@ -59,6 +59,7 @@ const Features = ({ sessionData }:any) => {
 
   useEffect(() => {
     if (formatedPortfolio) {
+      console.log(formatPortfolioData)
       rebalancePortfolio(formatedPortfolio).then((res) => {
         setRebalanceData(res);
       });
