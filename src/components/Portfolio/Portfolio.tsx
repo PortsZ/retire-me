@@ -72,7 +72,7 @@ const Portfolio = () => {
 
   const lookupStock = async (smbl:any) => {
 
-    const lookupRes = await axios.post(`${apiUrl}/api/lookup`, {
+    const lookupRes = await axios.post(`/api/lookup`, {
       symbol: smbl.toUpperCase(),
     });
 
