@@ -1,17 +1,6 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/api/lookup/route": "app/api/lookup/route.js",
-  "/api/portfolio/rebalance/route": "app/api/portfolio/rebalance/route.js",
-  "/api/portfolio/stock/[...id]/route": "app/api/portfolio/stock/[...id]/route.js",
-  "/api/portfolio/stock/route": "app/api/portfolio/stock/route.js",
-  "/api/python/route": "app/api/python/route.js",
-  "/auth/sign-in/page": "app/auth/sign-in/page.js",
-  "/auth/sign-out/page": "app/auth/sign-out/page.js",
-  "/auth/sign-up/page": "app/auth/sign-up/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/financing/page": "app/financing/page.js",
-  "/page": "app/page.js",
-  "/retire/page": "app/retire/page.js",
-  "/api/auth/sign-up/route": "app/api/auth/sign-up/route.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

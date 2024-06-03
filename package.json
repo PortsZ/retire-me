@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "flask-dev": "flask --app src/app/api/python/index run -p 5328 --debugger --reload",
+    "flask-dev": "flask --app src/app/api/index:app run -p 5328 --reload",
     "flask-build": "flask --app src/app/api/python/index build",
     "flask-start": "flask --app src/app/api/python/index start",
     "next-dev": "NODE_ENV=development next dev",

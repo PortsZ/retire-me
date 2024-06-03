@@ -71,9 +71,11 @@ const Portfolio = () => {
   //====================================================================================================
 
   const lookupStock = async (smbl:any) => {
+
     const lookupRes = await axios.post(`${apiUrl}/api/lookup`, {
       symbol: smbl.toUpperCase(),
     });
+
     return lookupRes.data;
   };
 
@@ -90,13 +92,12 @@ const Portfolio = () => {
   //====================================================================================================
 
   const addStock = async (data:any) => {
-    console.log("data:", data.symbol);
     const lookupRes = await lookupStock(data.symbol);
 
     if (lookupRes) {
-      console.log("data:", lookupRes);
       const symbol = lookupRes.symbol.toUpperCase();
       const quantity = parseInt(data.quantity);
+      console.log(quantity)
 
       const addToDbRes = await addStockToPortfolio(userId, symbol, quantity);
       console.log("addToDbRes:", addToDbRes);

@@ -1,29 +1,31 @@
 import yfinance as yf
 import pandas as pd
 import numpy as np
+import datetime
+import pytz
 
 def rebalance(stocks):
-
-
-    # Predefined asset class weights
-    asset_class_weights = {
-        "stocks": 0.5,
-        "reits": 0.5
-    }
 
     # Categorize each stock into its asset class
     asset_classes = {"stocks": [], "reits": []}
     for stock in stocks:
-        if stock[4:-3] == "11": # MXRF11.SA
+        if stock[4:-3] == "11":  # MXRF11.SA
             asset_classes["reits"].append(stock)
         else:
             asset_classes["stocks"].append(stock)
 
+    # Adjust asset class weights based on presence of REITs
+    if not asset_classes["reits"]:
+        asset_class_weights = {"stocks": 1.0, "reits": 0.0}
+    else:
+        asset_class_weights = {"stocks": 0.5, "reits": 0.5}
+
     # Print to verify the classification
     # print("Stocks classified as REITs:", asset_classes["reits"])
+    end = datetime.datetime.now(pytz.timezone("US/Eastern"))
 
     # Fetch historical data and dividends for these stocks
-    data = yf.download(list(stocks.keys()), start="2020-01-01", end="2023-12-25")['Adj Close']
+    data = yf.download(list(stocks.keys()), start="2020-01-01", end=end)['Adj Close']
     dividends = {stock: yf.Ticker(stock).dividends for stock in stocks}
     annual_dividend_yield = {stock: dividends[stock].sum() / data[stock].mean() for stock in stocks}
 

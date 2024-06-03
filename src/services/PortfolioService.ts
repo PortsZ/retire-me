@@ -19,6 +19,7 @@ export const addStockToPortfolio = async (userId:any, symbol:any, quantity:any) 
     symbol: symbol,
     quantity: quantity,
   };
+
   const response = await axios.post(`${apiUrl}/api/portfolio/stock`, data);
   return response.data;
 };
@@ -43,8 +44,8 @@ export const liquidateStock = async (userId:any, symbol:any) => {
 
 export const rebalancePortfolio = async (stocks:any) => {
   const data = { stocks };
+  console.log("data going into rebalancer:", data);
   const response = await axios.post(`${apiUrl}/api/portfolio/rebalance`, data);
 
-  console.log(response.data);
   return response.data;
 };

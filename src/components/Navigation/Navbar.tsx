@@ -59,7 +59,7 @@ const Navbar = () => {
           >
             Me_Aposenta
           </a>
-          <p className="italic">{data ? `Hello, ${data.user?.username}` : ""}</p>
+          <p className="italic">{data ? `Hello, user` : ""}</p>
         </div>
         <a href={status=== 'authenticated' ? "/auth/sign-out" : '/auth/sign-in'} className="text-zinc-100 italic">
           {status === "authenticated" ? "Log Out" : "Sign In"}

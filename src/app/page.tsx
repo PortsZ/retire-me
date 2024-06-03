@@ -10,18 +10,6 @@ import axios from "axios";
 export default function Home() {
   const { status, data } = useSession();
 
-  const fetchData = async () => {
-    const response = await axios.get("/api/test");
-    
-    console.log("data: "+ response.data);
-  };
-
-  useEffect(() => {
-
-   
-
-    fetchData();
-  }, [status]);
 
   return (
     <main className="flex flex-col items-center justify-start p-24 gap-10 ">

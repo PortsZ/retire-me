@@ -15,25 +15,25 @@ os.environ["FLASK_ENV"] = "development"
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/api")
+@app.route("/api/python")
 def hello_world():
     return jsonify(data="Hello World!!!!")
 
-@app.route("/api/lookup", methods=["POST", "GET"])
+@app.route("/api/python/lookup", methods=["POST", "GET"])
 def flask_lookup():
-    print("DEBUG: ", request.method)
+    
     if request.method == "POST":
         data = request.json  # Get JSON data from request
-
+        
         # Check if symbol is provided
         symbol = data.get("symbol") if data else None
         if not symbol:
             return jsonify({"error": "No symbol provided"}), 400
-
+        
         stock_data = lookup(symbol)
         return jsonify(stock_data)
 
-@app.route("/api/rebalance", methods=["POST"])
+@app.route("/api/python/rebalance", methods=["POST"])
 def flask_rebalance():
     if request.method == "POST":
         data = request.json
@@ -51,10 +51,10 @@ def create_app():
     return app
 
 # Main block
-if __name__ != "__main__":
-    app = DispatcherMiddleware(app, {
-        '/api': create_app()
-    })
+# if __name__ != "__main__":
+#     app = DispatcherMiddleware(app, {
+#         '/api': create_app()
+#     })
 
 if __name__ == "__main__":
     app.run(debug=True)
