@@ -11,7 +11,7 @@ const page = () => {
       text-black p-16 justify-start items-start rounded-lg gap-6"
       >
         <div className="w-full">
-          <h1 className="text-2xl font-bold">Calculadora de Financiamento</h1>
+          <h1 className="text-2xl font-bold">Financing calculator</h1>
         </div>
         <div>
             <FinancingForm/>

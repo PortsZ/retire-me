@@ -57,7 +57,7 @@ const Navbar = () => {
             href="/"
             className="leading-tight text-lime-300 font-light font-logo italic text-2xl"
           >
-            Me_Aposenta
+            Retire_Me
           </a>
           <p className="italic">{data ? `Hello, user` : ""}</p>
         </div>

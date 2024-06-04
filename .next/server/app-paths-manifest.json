@@ -1,7 +1,6 @@
 {
   "/page": "app/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/portfolio/stock/[...id]/route": "app/api/portfolio/stock/[...id]/route.js",
   "/api/lookup/route": "app/api/lookup/route.js",
-  "/api/portfolio/rebalance/route": "app/api/portfolio/rebalance/route.js"
+  "/retire/page": "app/retire/page.js"
 }

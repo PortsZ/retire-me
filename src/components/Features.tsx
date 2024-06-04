@@ -6,28 +6,28 @@ import { rebalancePortfolio, getPortfolio } from "@/services/PortfolioService";
 
 const features = [
   {
-    name: "Me Aposenta!",
+    name: "Retire_Me!",
     url: "/retire",
-    description: "Calculadora de Liberdade Financeira",
+    description: "Financial Freedom Calculator",
     style: "from-sky-300 to-sky-500",
   },
   {
-    name: "Calculadora de Financiamento",
+    name: "Financing Calculator",
     url: "/financing",
     description:
-      "Calcule qualquer incognita do seu financiamento com apenas 3 dados",
+      "Calculate the financing of your dream house or car with only few clicks",
     style: "from-lime-400 to-green-500",
   },
   {
-    name: "Assistente de Criação de Portfólio",
-    description: "Em breve!",
+    name: "Portfolio Creation Wizard",
+    description: "Soon!",
     enabled: "disabled",
-    disabledMessage: "Em breve!",
+    disabledMessage: "Soon!",
     disabledStyle: "from-slate-100 to-slate-400 opacity-60 cursor-not-allowed",
   },
   {
-    name: "Rebalanceamento de Portfólio",
-    description: "Gerencie seu portfolio",
+    name: "Rebalance",
+    description: "Get rebalance suggestions for your portfolio",
     style: "from-fuchsia-500 to-rose-400 cursor-not-allowed",
   },
 ];

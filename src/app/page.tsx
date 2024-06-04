@@ -10,6 +10,12 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-start p-24 gap-10 ">
+
+      <section>
+        <p className="text-lg text-center">
+          A simple tool to help you retire. Just log in, add your portfolio and click rebalance
+        </p>
+      </section>
       {status === "authenticated" && (
         <section className="flex min-w-[50%] xl:p-16 md:p-10 p-8 bg-slate-900 rounded-xl">
           <Portfolio />

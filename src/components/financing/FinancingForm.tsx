@@ -314,7 +314,7 @@ const FinancingForm = () => {
       className="grid grid-cols-2 gap-4 text-white"
     >
       <div>
-        <label className="text-slate-900">Montante Financiado</label>
+        <label className="text-slate-900">Financed Amount</label>
         <input
           step="0.01"
           type="number"
@@ -325,7 +325,7 @@ const FinancingForm = () => {
         />
       </div>
       <div>
-        <label className="text-slate-900">Numero de Meses</label>
+        <label className="text-slate-900">Month quantity</label>
         <input
           type="number"
           onFocus={onBlurCalculate}
@@ -336,7 +336,7 @@ const FinancingForm = () => {
       </div>
       <div className="flex gap-1 ">
         <div className="flex  flex-col gap-1 ">
-          <label className="text-slate-900">Tipo de juros</label>
+          <label className="text-slate-900">Interest Period</label>
           <div className=" flex text-slate-100 bg-slate-900 rounded p-1">
             <button
               type="button"
@@ -350,7 +350,7 @@ const FinancingForm = () => {
                 setShouldUpdate(true);
               }}
             >
-              Mensal
+              Monthly
             </button>
             <button
               type="button"
@@ -364,12 +364,12 @@ const FinancingForm = () => {
                 setShouldUpdate(true);
               }}
             >
-              Anual
+              Annual
             </button>
           </div>
         </div>
         <div className="flex w-full flex-col gap-1 ">
-          <label className="text-slate-900">Juros (%)</label>
+          <label className="text-slate-900">Interest (%)</label>
           <input
             className="rounded w-full bg-slate-900 px-4 py-2"
             type="number"
@@ -382,7 +382,7 @@ const FinancingForm = () => {
         </div>
       </div>
       <div>
-        <label className="text-slate-900">Parcelas Mensais</label>
+        <label className="text-slate-900">Monthly installment</label>
         <input
           step="0.01"
           type="number"
@@ -403,7 +403,7 @@ const FinancingForm = () => {
       </div>
       <div className="flex gap-6 w-full col-span-2 text-xl">
         <div>
-          <label className="text-slate-900">Montante Pago em Juros</label>
+          <label className="text-slate-900">Amount Paid In Interest</label>
           <input
             step="0.01"
             type="number"
@@ -413,7 +413,7 @@ const FinancingForm = () => {
           />
         </div>
         <div>
-          <label className="text-slate-900">Montante Total Futuro Pago</label>
+          <label className="text-slate-900">Total Amount Paid</label>
           <input
             step="0.01"
             type="number"
