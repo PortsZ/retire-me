@@ -69,7 +69,7 @@ const Features = ({ sessionData }:any) => {
   return (
     <div className="grid grid-cols-2 gap-2 p-2">
       {features.map((feature, index) => {
-        if (feature.name === "Rebalanceamento de Portfólio") {
+        if (feature.name === "Rebalance") {
           return (
             <React.Fragment key={index}>
               <motion.div
