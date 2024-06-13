@@ -44,7 +44,7 @@ export const liquidateStock = async (userId:any, symbol:any) => {
 
 export const rebalancePortfolio = async (stocks:any) => {
   const data = { stocks };
-  console.log("data going into rebalancer:", data);
+  // console.log("data going into rebalancer:", data);
   const response = await axios.post(`${apiUrl}/api/portfolio/rebalance`, data);
 
   return response.data;

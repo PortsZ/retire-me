@@ -3,7 +3,7 @@ import { PrismaLibSQL } from "@prisma/adapter-libsql";
 import { createClient } from "@libsql/client";
 
 const libsql = createClient({
-  url: "libsql://retire-me-portsz.turso.io",
+  url: process.env.TURSO_DATABASE_URL as string,
   authToken: process.env.TURSO_AUTH_TOKEN,
 });
 
